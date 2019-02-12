@@ -132,8 +132,8 @@ Table::Table(const Table& t){
 	inserted = t.inserted;
 	table = new std::vector<Entry>[max_entries];
 	for(int i = 0; i < max_entries; i++){
-		if(t.table[i] != NULL){
-		  table.put(t.table[i].get_key(), t.table[i].get_data());
+		for(int j = 0; j < t.table[i].size(); j++){
+			put(t.table[i][j].get_key(), t.table[i][j].get_data());
 		}
 	}
 }
@@ -144,13 +144,14 @@ Table& Table::operator = (const Table &t){
 	}
 	this -> max_entries = t.max_entries;
 	this -> inserted = t.inserted;
-	this -> talbe -> clear();
+	this -> table -> clear();
 
 	for(int i = 0; i < max_entries; i++){
-		if(t.table[i] != NULL){
-		  table.put(t.table[i].get_key(), t.table[i].get_data());
+		for(int j = 0; j < t.table[i].size(); j++){
+			put(t.table[i][j].get_key(), t.table[i][j].get_data());
 		}
 	}
+
 	return *this;
 
 }
