@@ -142,13 +142,14 @@ Table& Table::operator = (const Table &t){
 	if(this == &t){
 		return *this;
 	}
+
 	this -> max_entries = t.max_entries;
 	this -> inserted = t.inserted;
 	this -> table -> clear();
 
 	for(int i = 0; i < max_entries; i++){
 		for(int j = 0; j < t.table[i].size(); j++){
-			put(t.table[i][j].get_key(), t.table[i][j].get_data());
+			this -> put(t.table[i][j].get_key(), t.table[i][j].get_data());
 		}
 	}
 
