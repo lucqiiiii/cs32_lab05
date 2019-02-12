@@ -153,7 +153,7 @@ Table& Table::operator = (const Table &t){
 		}
 	}
 
-	return *this;
+	return this;
 
 }
 
