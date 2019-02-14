@@ -145,15 +145,18 @@ Table& Table::operator = (const Table &t){
 
 	this -> max_entries = t.max_entries;
 	this -> inserted = t.inserted;
+	for(int j = 0; j < max_entries; j++){
+		this -> table[j].clear();
+	}
 	this -> table -> clear();
-
+	this -> table = new std::vector<Entry>[max_entries];
 	for(int i = 0; i < max_entries; i++){
 		for(int j = 0; j < t.table[i].size(); j++){
 			this -> put(t.table[i][j].get_key(), t.table[i][j].get_data());
 		}
 	}
 
-	return this;
+	return *this;
 
 }
 
