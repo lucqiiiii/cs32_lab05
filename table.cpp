@@ -144,7 +144,7 @@ Table& Table::operator = (const Table &t){
 	}
 
 	this -> max_entries = t.max_entries;
-	this -> inserted = t.inserted;
+	this -> inserted = 0;
 	for(int j = 0; j < max_entries; j++){
 		this -> table[j].clear();
 	}
