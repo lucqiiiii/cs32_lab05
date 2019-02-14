@@ -129,7 +129,7 @@ std::ostream& operator<< (std::ostream& out,const Table& t){
 
 Table::Table(const Table& t){
 	max_entries = t.max_entries;
-	inserted = t.inserted;
+	inserted = 0;
 	table = new std::vector<Entry>[max_entries];
 	for(int i = 0; i < max_entries; i++){
 		for(int j = 0; j < t.table[i].size(); j++){
@@ -145,10 +145,8 @@ Table& Table::operator = (const Table &t){
 
 	this -> max_entries = t.max_entries;
 	this -> inserted = 0;
-	for(int j = 0; j < max_entries; j++){
-		this -> table[j].clear();
-	}
-	this -> table -> clear();
+	
+	delete [] this -> table;
 	this -> table = new std::vector<Entry>[max_entries];
 	for(int i = 0; i < max_entries; i++){
 		for(int j = 0; j < t.table[i].size(); j++){
